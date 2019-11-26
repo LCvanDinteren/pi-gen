@@ -122,7 +122,8 @@ if [ "$(id -u)" != "0" ]; then
 	exit 1
 fi
 
-export BASE_DIR=${BASE_DIR:-"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"}
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export BASE_DIR
 
 if [ -f config ]; then
 	# shellcheck disable=SC1091
@@ -178,8 +179,6 @@ export KEYBOARD_LAYOUT="${KEYBOARD_LAYOUT:-English (UK)}"
 export TIMEZONE_DEFAULT="${TIMEZONE_DEFAULT:-Europe/London}"
 
 export GIT_HASH=${GIT_HASH:-"$(git rev-parse HEAD)"}
-
-export BASE_DIR
 
 export CLEAN
 export IMG_NAME
